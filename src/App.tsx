@@ -1,8 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
+import Header from "./components/Header";
+import Routers from "./routers/Routers";
+
 const App = () => {
   return (
-    <div className="App">
-      <h1>Hello Typescript</h1>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <Routers/>
+    </BrowserRouter>
   );
 }
 

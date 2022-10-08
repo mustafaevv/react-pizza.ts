@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --port 4000 --watch public/db.json"
   },
   "resolutions": {
     "styled-components": "^5"
@@ -46,7 +47,9 @@
     ]
   },
   "devDependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@types/styled-components": "^5.1.26",
+    "json-server": "^0.17.0",
     "react-icons": "^4.4.0"
   }
 }

@@ -1,11 +1,20 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+import Header from "../../components/Header";
+import NavLinks from "../../components/NavLinks";
+import Product from "../../components/Product";
+import Container from "../../layout/Container";
 
-const Home = (props: Props) => {
+const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <Container>
+        <Header/>
+        <NavLinks />
+        <Product/>
+      </Container>
+    </>
+  );
+};
 
-export default Home
+export default Home;

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { FaPlus } from 'react-icons/fa'
+import { FaPlus } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cart";
 
 const Block = styled.div`
   max-width: 280px;
@@ -93,15 +95,17 @@ const Added = styled.button`
   justify-content: center;
   color: #eb5a1e;
   gap: 0.5em;
+  cursor: pointer;
 
-  & span{
+  & span {
     font-size: 18px;
     font-weight: bold;
   }
 `;
 
-
-const Product = ({data}) => {  
+const Product = ({ data }: any) => {
+  const dispatch = useDispatch();
+  const handleSelect = () => dispatch(addToCart(data));
   return (
     <Block>
       <Img src={data.image} alt={data.name} />
@@ -120,7 +124,7 @@ const Product = ({data}) => {
       <Item>
         <Price>от {data.price}</Price>
         <Added>
-          <FaPlus/> <p>Добавить</p> <span>2</span>
+          <FaPlus onClick={handleSelect} /> <p>Добавить</p> <span>2</span>
         </Added>
       </Item>
     </Block>

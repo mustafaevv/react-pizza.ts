@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { FiShoppingCart } from 'react-icons/fi'
+import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import Logo from "./Logo";
+import { useSelector } from "react-redux";
+import { getItemCount } from "../redux/cart";
 
 const Block = styled.div`
   display: flex;
@@ -11,7 +13,6 @@ const Block = styled.div`
   justify-content: space-between;
   margin-bottom: 4em;
 `;
-
 
 const Button = styled.button`
   border: none;
@@ -29,26 +30,29 @@ const Button = styled.button`
   cursor: pointer;
   text-decoration: none;
 
-  & span{
+  & span {
     display: flex;
     align-items: center;
-    &::after{
+    &::after {
       content: "";
       width: 2px;
       height: 30px;
-      background-color: #FFDF8C;
+      background-color: #ffdf8c;
       display: block;
       margin-left: 10px;
     }
   }
-
 `;
 
 const Header = () => {
+
   return (
     <Block>
-      <Logo/>
-      <Button as={Link} to="/cart"><span>520 ₽ </span><FiShoppingCart/> <p>3</p> </Button>
+      <Logo />
+      <Button as={Link} to="/cart">
+        <span> 550 ₽</span>
+        <FiShoppingCart /> 3
+      </Button>
     </Block>
   );
 };

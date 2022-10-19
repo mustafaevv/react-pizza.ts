@@ -1,28 +1,28 @@
 const categories = [
   {
-    name: 'Все',
-    link: '/',
+    name: "Все",
+    link: "/",
   },
   {
-    name: 'Мясные',
-    link: '/',
+    name: "Мясные",
+    link: "/category/meat",
   },
   {
-    name: 'Вегетарианская',
-    link: '/',
+    name: "Вегетарианская",
+    link: "/category/vegetarian",
   },
   {
-    name: 'Гриль',
-    link: '/',
+    name: "Гриль",
+    link: "/category/grill",
   },
   {
-    name: 'Острые',
-    link: '/',
+    name: "Острые",
+    link: "/category/acute",
   },
   {
-    name: 'Закрытые',
-    link: '/',
+    name: "Закрытые",
+    link: "/category/closed",
   },
-]
+];
 
-export default categories
+export default categories;

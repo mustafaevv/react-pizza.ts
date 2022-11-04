@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 
 import categories from "../routers/categories";
 
+import classes from "./NavLink.module.scss";
+
 const List = styled.ul`
   list-style: none;
   display: flex;
@@ -12,7 +14,6 @@ const List = styled.ul`
 
 const NavLink = styled.a`
   background: #f9f9f9;
-  /* background: ${({ pathname }: any) => (pathname ? "#f9f9f9" : "black")}; */
   border-radius: 30px;
   text-decoration: none;
   font-weight: 700;
@@ -32,15 +33,20 @@ const NavLinks = () => {
   const { pathname } = useLocation();
 
   return (
-    <List>
+    <ul className={classes["list"]}>
       {categories.map(({ name, link }) => (
         <li key={name}>
-          <NavLink state={pathname === "/"} as={Link} to={link}>
+          <Link
+            className={`${classes["list__link"]} ${
+              pathname === link ? classes["list__link_active"] : ""
+            }`}
+            to={link}
+          >
             {name}
-          </NavLink>
+          </Link>
         </li>
       ))}
-    </List>
+    </ul>
   );
 };
 

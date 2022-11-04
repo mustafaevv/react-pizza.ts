@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cart";
+
+type openedProps = {
+  select: boolean;
+};
 
 const Block = styled.div`
   max-width: 280px;
@@ -81,11 +85,11 @@ const Price = styled.p`
   font-size: 22px;
   color: #000000;
 `;
-const Added = styled.button`
+const Added = styled.button<openedProps>`
   max-width: 155px;
   width: 100%;
   line-height: 45px;
-  background: none;
+  background: ${({ select }) => (select ? "none" : "#fe5f1e")};
   border: 1px solid #fe5f1e;
   border-radius: 30px;
   font-weight: 700;
@@ -93,19 +97,20 @@ const Added = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #eb5a1e;
+  color: ${({ select }) => (select ? "#fe5f1e" : "#fff")};
   gap: 0.5em;
   cursor: pointer;
-
-  & span {
-    font-size: 18px;
-    font-weight: bold;
-  }
+  transition: 0.5s color, 0.5s background;
 `;
 
 const Product = ({ data }: any) => {
   const dispatch = useDispatch();
-  const handleSelect = () => dispatch(addToCart(data));
+  const [select, setSelect] = useState(false);
+
+  const handleSelect = () => {
+    dispatch(addToCart(data));
+    setSelect((state) => !state);
+  };
   return (
     <Block>
       <Img src={data.image} alt={data.name} />
@@ -123,8 +128,8 @@ const Product = ({ data }: any) => {
       </Info>
       <Item>
         <Price>от {data.price}</Price>
-        <Added>
-          <FaPlus onClick={handleSelect} /> <p>Добавить</p> <span>2</span>
+        <Added select={select} onClick={handleSelect}>
+          <FaPlus /> Добавить
         </Added>
       </Item>
     </Block>
